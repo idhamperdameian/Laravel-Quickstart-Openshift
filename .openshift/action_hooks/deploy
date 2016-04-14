@@ -71,4 +71,6 @@ fi
 echo "Running 'php artisan migrate --force'..."
 php artisan migrate --force
 
+php artisan config:cache
+
 popd > /dev/null
