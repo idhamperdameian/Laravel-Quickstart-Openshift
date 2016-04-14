@@ -4,3 +4,20 @@ set -e
 # Build PHP extra's
 # Update conf/ini files and install pecl extensions
 ${OPENSHIFT_PHP_DIR}/bin/control build
+
+# Update composer executable
+if [ -f "$OPENSHIFT_PHP_DIR/composer/bin/composer" ]; then
+    echo 'Updating Composer'
+    php $OPENSHIFT_PHP_DIR/composer/bin/composer -q --no-ansi self-update
+fi
+
+# Build Laravel Framework
+if [ -d "$OPENSHIFT_REPO_DIR/vendor" ]; then
+    echo 'Dependencies already installed, Moving on...'
+else
+    echo 'Hang in there, we are getting ready to Install/Update dependencies'
+    echo 'Installing/Updating dependencies';
+    unset GIT_DIR;
+    cd $OPENSHIFT_REPO_DIR;
+    php $OPENSHIFT_PHP_DIR/composer/bin/composer -q --no-ansi install;
+fi
