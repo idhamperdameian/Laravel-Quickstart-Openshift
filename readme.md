@@ -41,11 +41,11 @@ If you need anything else like DB for example use existing OpenShift cartridges 
 - Clone [this application repository](https://github.com/idhamperdameian/Laravel-Quickstart-Openshift) localy
 - Go to repo's root
 - In OpenShift application preview page, copy git **source code** url repository
-- Assuming we need to add remote url with name `openshif`, so type `git remote add openshif repo_url`. Replace **repo_url** with openshif git **source code** url repository.
+- Assuming we need to add remote url with name `openshift`, so type `git remote add openshift repo_url`. Replace **repo_url** with openshift git **source code** url repository.
 - Type `git pull openshift master`.
 - Remove file `public/index.html` if exist.
 - Fix conflict of `.openshift/nginx.conf.erb` file, (or to make sure replace file with [nginx.conf.erb](.openshift/nginx.conf.erb)) then run "git commit".
-- Push to OpenShift, type `git push openshif master`
+- Push to OpenShift, type `git push openshift master`
 - Your application is ready. Congratulation!.
 
 ## Official Documentation
