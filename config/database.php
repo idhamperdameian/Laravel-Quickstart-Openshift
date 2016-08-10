@@ -47,9 +47,9 @@ return [
     'connections' => [
 
         'sqlite' => [
-            'driver' => 'sqlite',
+            'driver'   => 'sqlite',
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
-            'prefix' => '',
+            'prefix'   => '',
         ],
 
         'mysql' => [
@@ -63,7 +63,7 @@ return [
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
             'strict'    => false,
-            'engine' => null,
+            'engine'    => null,
         ],
 
         'pgsql' => [
