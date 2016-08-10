@@ -1,4 +1,4 @@
-# Laravel PHP Framework
+# Quickstart for Laravel 5.2 PHP Framework on Openshift
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
@@ -9,6 +9,44 @@
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
 
 Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+
+## Setting up Laravel 5.2 for Openshift
+
+This documentation is forking from [Djordje Kovacevic](https://djordjekovacevic.com/articles/run-laravel-5.1-on-openshift) website with added extra information.
+
+### OpenShift application creation steps
+
+- Go to OpenShift's create application page: https://openshift.redhat.com/app/console/application_types.
+- Scroll to the bottom and find in the left corner "Code Anything" title with input field bellow.
+- Paste URL of nginx cartridge http://cartreflect-claytondev.rhcloud.com/github/boekkooi/openshift-cartridge-nginx, then hit next button.
+- Populate **Public URL** field.
+- Chose **Scaling** if you want.
+- Hit "Create Application" button and wait for OpenShift to build your environment.
+- Continue to **the application overview page**.
+
+### Add PHP cartridge to your application
+
+- Find on the bottom of **the application overview page**, "see the entire list of cartridges you can add" link and click on it.
+- Scroll to the bottom of the page and find "Install your own cartridge" title with input field bellow.
+- Paste URL for PHP cartridge http://cartreflect-claytondev.rhcloud.com/github/boekkooi/openshift-cartridge-php, then hit next button.
+- On next page check details and hit "Add Cartridge" button and wait for OpenShift to update your environment.
+
+### Additional cartridges
+
+If you need anything else like DB for example use existing OpenShift cartridges (MySQL, PostgreSQL).
+
+### Prepare for Laravel 5.2
+
+- Open terminal application.
+- Clone [this application repository](https://github.com/idhamperdameian/Laravel-Quickstart-Openshift) localy
+- Go to repo's root
+- In OpenShift application preview page, copy git **source code** url repository
+- Assuming we need to add remote url with name `openshif`, so type `git remote add openshif repo_url`. Replace **repo_url** with openshif git **source code** url repository.
+- Type `git pull openshift master`.
+- Remove file `public/index.html` if exist.
+- Fix conflict of `.openshift/nginx.conf.erb` file, (or to make sure replace file with [nginx.conf.erb](.openshift/nginx.conf.erb)) then run "git commit".
+- Push to OpenShift, type `git push openshif master`
+- Your application is ready. Congratulation!.
 
 ## Official Documentation
 
